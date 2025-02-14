@@ -114,7 +114,16 @@ export async function fetchFilteredInvoices(
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
 
-    return invoices;
+    // Log raw data
+    console.log("Raw Invoices Data:", invoices);
+
+    // Remove duplicates
+    const uniqueInvoices = invoices.filter(
+      (invoice, index, self) =>
+        index === self.findIndex((t) => t.id === invoice.id)
+    );
+
+    return uniqueInvoices;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch invoices.");
