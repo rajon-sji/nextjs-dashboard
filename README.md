@@ -7,9 +7,9 @@ This is the starter template for the Next.js App Router Course. It contains the 
 [Visit the site](https://nextjs-dashboard-alpha-roan-90.vercel.app)
 
 ### Run this on Local 
-- Git clone
-- pnpm install
-- pnpm run dev
+- `Git clone`
+- `pnpm install`
+- `pnpm run dev`
 
 ### Check with the following creds: 
 - email: "user@nextmail.com"
