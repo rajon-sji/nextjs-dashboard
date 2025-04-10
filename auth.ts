@@ -37,10 +37,17 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
 
           if (passwordsMatch) return user;
         }
-
         console.log("Invalid credentials");
         return null;
       },
     }),
   ],
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      // Ensure redirect goes to callbackUrl or /dashboard
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      if (url === baseUrl) return `${baseUrl}/dashboard`;
+      return url; // External URLs or callbackUrl
+    },
+  },
 });
